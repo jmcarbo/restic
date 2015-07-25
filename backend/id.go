@@ -132,3 +132,15 @@ func (ids IDs) Less(i, j int) bool {
 func (ids IDs) Swap(i, j int) {
 	ids[i], ids[j] = ids[j], ids[i]
 }
+
+// IDSet is a set of IDs.
+type IDSet map[string]struct{}
+
+func NewIDSet(ids IDs) IDSet {
+	m := make(IDSet)
+	for _, id := range ids {
+		m[id] = struct{}{}
+	}
+
+	return m
+}
